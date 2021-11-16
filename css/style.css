@@ -1,0 +1,24 @@
+body{
+    background-color: #292424 ;
+    padding: 0px;
+    margin: 0px;
+}
+#main{
+    padding: 10px;
+    opacity: 0.8;
+    /* display: none; */
+}
+#center{
+    position: absolute;
+    background-color: azure;
+    padding: 10px;
+    margin: auto;
+    width: 200px;
+    height: 150px;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: crimson;
+}
