@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: #292424 ;
     padding: 0px;
     margin: 0px;
@@ -6,9 +6,10 @@ body{
 #main{
     padding: 10px;
     opacity: 0.8;
-    /* display: none; */
-}
-#center{
+    /* display: none; 
+}*/
+/* current centered div */
+/* #center{
     position: absolute;
     background-color: azure;
     padding: 10px;
@@ -21,4 +22,115 @@ p{
     font-weight: bold;
     text-align: center;
     color: crimson;
+}  */
+
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {...} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {...} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {...} */
+
+
+body{
+    background-color: aliceblue;
+    padding: auto;
+    margin: auto;
 }
+.body{
+    color: black;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+}
+#top{
+    color: crimson;
+    position: relative;
+    text-align: center;
+}
+#content{
+    padding-top: 50px;
+    text-align: center;
+    color: #00008B;
+}
+
+.sec1{
+    font-family:'Helvetica Neue', Garamond;
+    font-weight: bolder;
+    font-size: 175%;
+    color: #4169E1	;
+}
+.sec2{
+    font-size: 120%;
+}
+.me{
+    color: aliceblue;
+    padding-top: 10%;
+}
+.myImg{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    border: 3px solid #000;
+}
+img{
+    display: inline-flex;
+}
+.sec3{
+    /* display: none; */
+    padding:30px;
+    position: relative;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.39);
+}
+#hhh{
+    font-weight: bolder;
+}
+.sec4{
+    border: solid red 3px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 95%;
+    margin:3%;
+   /*  margin-top: 0%;    */
+    /* position: absolute;
+    top: 55%;
+    left: 0;
+    z-index: 1; */
+}
+.designer, .fullStack, .mentor{
+    background: rgb(236, 230, 230);
+    display: inline-block;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 8px;
+    height: 600px;
+    width:30%;
+
+}
+ol li{
+    list-style-type:  none;
+}
+
+/* html {
+    position: relative;
+    min-height: 100%;
+}
+#footer {
+    display:none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+} */
