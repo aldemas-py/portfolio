@@ -94,7 +94,7 @@ img{
 #hhh{
     font-weight: bolder;
 }
-.sec4{
+.sec4, .sec5, .sec6, .contact{
     border: solid red 3px;
     display:flex;
     flex-wrap: wrap;
@@ -134,3 +134,16 @@ ol li{
     height: auto;
     width: 100%;
 } */
+#footer{
+    border: solid orangered 3px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 95%;
+    margin:3%;
+   /*  margin-top: 0%;    */
+    /* position: absolute;
+    top: 55%;
+    left: 0;
+    z-index: 1; */
+}
