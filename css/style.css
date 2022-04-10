@@ -107,15 +107,26 @@ img{
     left: 0;
     z-index: 1; */
 }
-.designer, .fullStack, .mentor{
+.sec4{
+    height: 350px;}
+.sec4files{
+    width: inherit;
+    position: absolute;
+    top: 55%;
+    margin-left: .5%;
+    z-index: 1;
+
+}
+.designer, .fullStack{
     background: rgb(236, 230, 230);
     display: inline-block;
     text-align: center;
-    margin: 0px;
+    margin: 1px;
     padding: 0px;
     margin-top: 8px;
-    height: 600px;
-    width:30%;
+    margin-bottom: 8px;
+    height: 100%;
+    width:49%;
 
 }
 ol li{
