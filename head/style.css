@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to bottom, #aeb6bf, #eee8d0);
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+section {
+    width: 80vw;
+    margin: 5% auto;
+    padding-top: 40px;
+    text-align: center;
+    line-height: 25px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* menu bar */
+
+.navbar {
+    min-width: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 3px grey;
+    box-shadow: 2px 2px 35px 2px #8a8a1d;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: large;
+    align-items: center;
+    letter-spacing: 3px;
+}
+
+.navbar .menu,
+.navbar .loginMenu {
+    display: flex;
+    list-style: none;
+
+}
+
+.navbar .menu {
+    list-style: none;
+}
+
+.navbar .menu a,
+.navbar .loginMenu li {
+    margin-right: 38px;
+    text-decoration: none;
+    color: rgb(75, 75, 44);
+}
