@@ -219,12 +219,6 @@ ol li {
     backdrop-filter: blur(5px);
 }
 
-.text {
-    background-color: #04AA6D;
-    color: black;
-    font-size: 20px;
-    /* padding: 16px 32px; */
-}
 
 .contact {
     padding: 5px;
@@ -362,6 +356,14 @@ ol li {
     .item4 {
         margin-left: 20%;
     }
+
+    .text {
+        background-color: #04AA6D;
+        color: black;
+        font-size: 20px;
+        /* padding: 16px 32px; */
+    }
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
