@@ -10,13 +10,11 @@ body {
     background-image: linear-gradient(to bottom, #aeb6bf, #eee8d0);
     background-attachment: fixed;
     font-family: Rockwell;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .body {
     color: black;
-    /* display: flex; */
-    /* flex-wrap: wrap; */
 }
 
 #top {
@@ -25,103 +23,6 @@ body {
     text-align: center;
 }
 
-/* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 600px) {...} */
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-/* @media only screen and (min-width: 600px) {
-    
-    
-#content{
-    padding-top: 50px;
-    text-align: center;
-    color: #00008B;
-}
-
-.sec1{
-    font-family:'Helvetica Neue', Garamond;
-    font-weight: bolder;
-    font-size: 175%;
-    color: #4169E1	;
-}
-.sec2{
-    font-size: 120%;
-}
-.me{
-    color: aliceblue;
-    padding-top: 20px;
-}
-.myImg{
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    background: #ccc;
-    border: 3px solid #000;
-}
-img{
-    display: inline-flex;
-}
-.sec3{
-    padding:30px;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.39);
-    height: fit-content;
-}
-#hhh{
-    font-weight: bolder;
-}
-    .sec4, .sec5, .sec6, .contact{
-        border: solid red 3px;
-        display:flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        width: 95%;
-        margin:3%;
-    }
-    .sec4{
-        height: fit-content;
-    }
-    .sec4files{
-        display: inline-block;
-        flex-wrap: wrap;
-        flex-direction: column;
-        width: inherit;
-
-    }
-    .designer, .fullStack{
-        background: rgb(236, 230, 230);
-        /* display: inline-block; 
-        text-align: center;
-        margin: 1px;
-        padding: 0px;
-        margin-top: 8px;
-        margin-bottom: 8px;
-        height: 500px;
-
-    }
-    ol li{
-        list-style-type:  none;
-    }
-    #footer{
-        border: solid orangered 3px;
-        display:flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        width: 95%;
-        margin:3%;
-    }
- 
-} */
-
-/* Medium devices (landscape tablets, 768px and up) */
-/* @media only screen and (min-width: 768px) {...} */
-
-/* Large devices (laptops/desktops, 992px and up) */
-/* @media only screen and (min-width: 992px) {...} */
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-
-/* @media only screen and (min-width: 1200px) { */
 /* Page Head */
 #content {
     padding-top: 50px;
@@ -162,6 +63,7 @@ img{
     color: rgb(75, 75, 44);
 }
 
+/* Post nav bar content */
 .sec1 {
     font-family: "Helvetica Neue", Garamond;
     font-weight: bolder;
@@ -197,19 +99,14 @@ img {
     height: fit-content;
 }
 
-#hhh {
+#sec3head {
     font-weight: bolder;
-}
-
-.sec3 {
-    height: 250px;
 }
 
 .sec4,
 .sec5,
 .sec6,
 .contact {
-    /* border: solid red 3px; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -220,17 +117,6 @@ img {
     text-align: center;
 }
 
-.sec4 {
-    height: 350px;
-}
-
-.sec4files {
-    width: inherit;
-    position: absolute;
-    top: 27pc;
-    margin-left: 0.5%;
-    z-index: 1;
-}
 
 .designer,
 .fullStack {
@@ -240,9 +126,6 @@ img {
     padding: 0px;
     margin-top: 8px;
     margin-bottom: 8px;
-    height: 440px;
-    width: 49%;
-    max-width: 550px;
 }
 
 .fullStack #sectionHead,
@@ -270,35 +153,6 @@ ol li {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    /* background-color: pink; */
-}
-
-.container {
-    display: inline-block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 20%;
-    height: 200px;
-    background-color: mintcream;
-    opacity: 1;
-    transition: .5s ease;
-    backface-visibility: hidden;
-}
-
-.container a {
-    text-decoration: none;
-}
-
-.item2,
-.item3,
-.item5,
-.item6 {
-    margin-left: 2.5%;
-}
-
-.item1,
-.item4 {
-    margin-left: 20%;
 }
 
 .item1 {
@@ -325,6 +179,26 @@ ol li {
     background-image: url("/images/image 6.jpg");
 }
 
+.container {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: mintcream;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    background-repeat: no-repeat;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.container a:active,
+.container a:visited {
+    color: blue;
+}
+
 .projects {
     position: relative;
 }
@@ -340,12 +214,9 @@ ol li {
     width: fit-content;
 }
 
-.container:hover {
-    opacity: 0.7;
-}
-
-.container:hover .middle {
-    opacity: 1;
+.containerName {
+    background-color: rgba(0, 0, 0, 0.61);
+    backdrop-filter: blur(5px);
 }
 
 .text {
@@ -355,10 +226,13 @@ ol li {
     /* padding: 16px 32px; */
 }
 
+.contact {
+    padding: 5px;
+}
+
 /* footer */
 
 #footer {
-    /* border: solid orangered 3px; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -381,18 +255,114 @@ ol li {
     color: black;
 }
 
-/* } */
+/* LOCAL */
+/* @media queries */
 
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {} */
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 300px) {
+    .sec2 {
+        padding: 2.2px;
+    }
 
-section {
-    width: 80vw;
-    margin: 5% auto;
-    padding-top: 40px;
-    text-align: center;
-    line-height: 25px;
+    .sec3 {
+        padding: 15px;
+        height: fit-content;
+    }
+
+    .sec4 {
+        height: 750px;
+    }
+
+    .sec4files {
+        width: inherit;
+        position: absolute;
+        height: inherit;
+        margin-left: 0.5%;
+        z-index: 1;
+    }
+
+    .designer,
+    .fullStack {
+        height: fit-content;
+        max-width: 550px;
+    }
+
+    .container {
+        width: 46%;
+        height: 150px;
+        margin-left: 2%;
+        max-width: 200px;
+    }
+
+    .footer .menu {
+        margin-top: 10px;
+        text-decoration: none;
+    }
+
 }
 
-h1 {
-    margin-bottom: 20px;
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    body {
+        font-size: 20px;
+    }
+
+    .sec3 {
+        height: 250px;
+    }
+
+    .sec4 {
+        height: 400px;
+    }
+
+    .sec4files {
+        width: inherit;
+        position: absolute;
+        top: 27pc;
+        margin-left: 0.5%;
+        z-index: 1;
+    }
+
+    .designer,
+    .fullStack {
+        height: fit-content;
+        width: 49%;
+        max-width: 550px;
+    }
+
+
+    .container {
+        width: 20%;
+        height: 200px;
+        max-width: 300px;
+    }
+
+    .container:hover {
+        opacity: 0.7;
+    }
+
+    .container:hover .middle {
+        opacity: 1;
+    }
+
+    .item2,
+    .item3,
+    .item5,
+    .item6 {
+        margin-left: 2.5%;
+    }
+
+    .item1,
+    .item4 {
+        margin-left: 20%;
+    }
 }
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {} */

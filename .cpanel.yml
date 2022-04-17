@@ -4,7 +4,6 @@ deployment:
     - export DEPLOYPATH=/home/njengasa/public_html/
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp comingsoon.html $DEPLOYPATH
-    # - /bin/cp style.css $DEPLOYPATH
     - /bin/cp -R images $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
     - /bin/cp -R js $DEPLOYPATH
