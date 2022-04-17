@@ -129,6 +129,39 @@ img{
     color: #00008b;
 }
 
+/* nav bar */
+
+.navbar {
+    min-width: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 3px grey;
+    box-shadow: 2px 2px 35px 2px #8a8a1d;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: large;
+    align-items: center;
+    letter-spacing: 3px;
+}
+
+.navbar .menu,
+.navbar .loginMenu {
+    display: flex;
+    list-style: none;
+
+}
+
+.navbar .menu {
+    list-style: none;
+}
+
+.navbar .menu a,
+.navbar .loginMenu li {
+    margin-right: 38px;
+    text-decoration: none;
+    color: rgb(75, 75, 44);
+}
+
 .sec1 {
     font-family: "Helvetica Neue", Garamond;
     font-weight: bolder;
@@ -252,6 +285,10 @@ ol li {
     backface-visibility: hidden;
 }
 
+.container a {
+    text-decoration: none;
+}
+
 .item2,
 .item3,
 .item5,
@@ -304,7 +341,7 @@ ol li {
 }
 
 .container:hover {
-    opacity: 0.3;
+    opacity: 0.7;
 }
 
 .container:hover .middle {
@@ -313,8 +350,8 @@ ol li {
 
 .text {
     background-color: #04AA6D;
-    color: white;
-    font-size: 16px;
+    color: black;
+    font-size: 20px;
     /* padding: 16px 32px; */
 }
 
@@ -327,8 +364,22 @@ ol li {
     flex-direction: row;
     width: 95%;
     margin: 3%;
+    min-width: 10px;
+    justify-content: space-between;
+    border-top: solid 3px grey;
+    box-shadow: 2px 2px 35px 2px #8a8a1d;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: large;
+    align-items: center;
+    letter-spacing: 3px;
 }
 
+.footer .menu a {
+    margin-right: 38px;
+    text-decoration: none;
+    color: black;
+}
 
 /* } */
 
@@ -344,37 +395,4 @@ section {
 
 h1 {
     margin-bottom: 20px;
-}
-
-/* menu bar */
-
-.navbar {
-    min-width: 10px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: solid 3px grey;
-    box-shadow: 2px 2px 35px 2px #8a8a1d;
-    padding: 12px 28px;
-    font-weight: 700;
-    font-size: large;
-    align-items: center;
-    letter-spacing: 3px;
-}
-
-.navbar .menu,
-.navbar .loginMenu {
-    display: flex;
-    list-style: none;
-
-}
-
-.navbar .menu {
-    list-style: none;
-}
-
-.navbar .menu a,
-.navbar .loginMenu li {
-    margin-right: 38px;
-    text-decoration: none;
-    color: rgb(75, 75, 44);
 }
