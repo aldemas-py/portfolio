@@ -129,8 +129,8 @@ img {
     margin-bottom: 8px;
 }
 
-.fullStack #sectionHead,
-.designer #sectionHead,
+.fullStack .sectionHead,
+.designer .sectionHead,
 .projects .sec6head {
     font-size: larger;
     font-weight: bolder;
