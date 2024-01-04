@@ -24,7 +24,7 @@ body {
 }
 
 /* Page Head */
-#content {
+.content {
     padding-top: 50px;
     text-align: center;
     color: #00008b;
@@ -97,7 +97,7 @@ img {
     padding: 30px;
     position: relative;
     background-color: rgba(0, 0, 0, 0.39);
-    height: fit-content;
+    /* height: fit-content; */
 }
 
 #sec3head {
@@ -141,7 +141,8 @@ ol li {
 }
 
 .sec5 {
-    display: none;
+    /* display: none; */
+    background-color: red;
 }
 
 .sec5content,
@@ -268,7 +269,7 @@ ol li {
     }
 
     .sec4 {
-        height: 750px;
+        height: fit-content;
     }
 
     .sec4files {
@@ -276,7 +277,9 @@ ol li {
         position: absolute;
         height: inherit;
         margin-left: 0.5%;
-        z-index: 1;
+        /* z-index: 1; */
+        /* height: max-content; */
+        /* height: 1000px; */
     }
 
     .designer,
@@ -313,15 +316,15 @@ ol li {
     }
 
     .sec4 {
-        height: 400px;
+        height: fit-content;
     }
 
     .sec4files {
         width: inherit;
-        position: absolute;
+        /* position: absolute; */
         top: 27pc;
         margin-left: 0.5%;
-        z-index: 1;
+        /* z-index: 1; */
     }
 
     .designer,
