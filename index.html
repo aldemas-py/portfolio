@@ -7,6 +7,7 @@
       src="https://www.googletagmanager.com/gtag/js?id=G-HNT5PDVW5Y"
     ></script>
     <script>
+      // window format display
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -45,13 +46,14 @@
             working on improving my chops one design problem at a time.
           </p> -->
           <p>
-            Embarking on my freelancing adventure nearly four years ago, I've
-            immersed myself in a dynamic world of remote work, teaming up with
-            innovative startups and collaborating with skilled individuals to
-            craft digital products tailored for both business and consumer
-            needs. Rooted in quiet confidence, fueled by genuine curiosity, I am
-            consistently dedicated to refining my skills, tackling design
-            challenges with a passion for continuous improvement.
+            Ever since embarking on my freelancing adventure
+            <span id="webDate"></span> ago, I've immersed myself in a dynamic
+            world of remote work, teaming up with innovative startups and
+            collaborating with skilled individuals to craft digital products
+            tailored for both business and consumer needs. Rooted in quiet
+            confidence, fueled by genuine curiosity, I am consistently dedicated
+            to refining my skills, tackling design challenges with a passion for
+            continuous improvement.
           </p>
         </div>
         <div class="sec4">
@@ -214,5 +216,9 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script>
+      // Call the function from the external script to set up the dynamic web date
+      setDynamicWebDate("webDate", "May 15, 2016");
+    </script>
   </body>
 </html>
