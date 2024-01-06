@@ -1,18 +1,26 @@
 // Navbar
 const nav = document.querySelector(".navbar");
 fetch("head/header.html")
-  .then((res) => res.text())
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    return res.text();
+  })
   .then((data) => {
     nav.innerHTML = data;
+  })
+  .catch((error) => {
+    console.error('Error fetching header:', error);
   });
-// html date
+
+// HTML date
 function setDynamicWebDate(elementId, startDateString) {
   const startDate = new Date(startDateString);
 
   function updateWebDate() {
     const currentDate = new Date();
     const timeDifference = currentDate - startDate;
-
     const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
 
     document.getElementById(elementId).innerHTML = `${years} ${years === 1 ? 'year' : 'years'}`;
@@ -23,25 +31,27 @@ function setDynamicWebDate(elementId, startDateString) {
   setInterval(updateWebDate, 24 * 60 * 60 * 1000); // Update every 24 hours
 }
 
-  
-// footer
-
+// Footer
 const foot = document.querySelector(".footer");
 fetch("head/footer.html")
-  .then((res) => res.text())
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    return res.text();
+  })
   .then((data) => {
     foot.innerHTML = data;
+    footerAlign(); // Call footer alignment after loading footer content
+  })
+  .catch((error) => {
+    console.error('Error fetching footer:', error);
   });
 
 function footerAlign() {
   var footerHeight = $(".footer").outerHeight();
-  $("body").css("padding-bottom", footerHeight);
+  $("body").css("margin-bottom", footerHeight); // Use "margin-bottom" instead of "padding-bottom"
 }
-
-$(document).ready(function () {
-  footerAlign();
-  $(".footer").html(htmlString);
-});
 
 $(window).resize(function () {
   footerAlign();

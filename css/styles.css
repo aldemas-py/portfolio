@@ -6,9 +6,10 @@
 }
 
 body {
-    text-align: center;
-    background-image: linear-gradient(to bottom, #aeb6bf, #eee8d0);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom right, #fdcb52, #d63447);
     background-attachment: fixed;
+    text-align: center;
     font-family: Rockwell;
     font-size: 15px;
 }
@@ -17,6 +18,7 @@ body {
     color: black;
 }
 
+/* ... (rest of your global styles) ... */
 #top {
     color: crimson;
     position: relative;
@@ -24,12 +26,12 @@ body {
 }
 
 /* Page Head */
-.content {
+/* .content {
     padding-top: 50px;
     text-align: center;
     color: #00008b;
     color: #042383;
-}
+} */
 
 /* nav bar */
 
@@ -38,15 +40,22 @@ body {
     display: flex;
     justify-content: space-between;
     border-bottom: solid 3px grey;
-    box-shadow: 2px 2px 35px 2px #8a8a1d;
+    box-shadow: 2px 2px 35px 2px #cdcd3d;
     padding: 12px 28px;
     font-weight: 700;
-    font-size: large;
+    font-size: larger;
     align-items: center;
     letter-spacing: 3px;
 }
 
-.navbar .menu,
+
+.navbar .logo {
+    display: none;
+    /* text-align: center;
+    width: 50vw; */
+}
+
+/* .navbar .menu,
 .navbar .loginMenu {
     display: flex;
     list-style: none;
@@ -62,10 +71,12 @@ body {
     margin-right: 38px;
     text-decoration: none;
     color: rgb(75, 75, 44);
-}
+} */
+
 
 /* Post nav bar content */
 .sec1 {
+    padding-top: 20px;
     font-family: "Helvetica Neue", Garamond;
     font-weight: bolder;
     font-size: 175%;
@@ -104,40 +115,15 @@ img {
     font-weight: bolder;
 }
 
-.sec4,
-.sec5,
-.sec6,
-.contact {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    width: 95%;
-    margin: 3%;
-    text-align: center;
-}
-
-.sec5 {
-    background-color: red;
-    /* Example background color, adjust as needed */
-    clear: both;
-    /* Add clear:both to ensure sec5 appears below sec4 */
-}
-
-.sec5content,
-.sec6content {
-    width: 100%;
-    clear: both;
-    /* Add clear:both to ensure content doesn't overlap with sec5 */
-}
-
-
-
 .designer,
 .fullStack {
-    background: rgb(236, 230, 230);
+    background-color: #e0e0e0;
+    /* Light grey background color */
+    color: #000;
     display: inline-block;
     margin: 1px;
-    padding: 0px;
+    padding: 10px;
+    padding-top: 15px;
     margin-top: 8px;
     margin-bottom: 8px;
 }
@@ -153,158 +139,37 @@ ol li {
     list-style-type: none;
 }
 
-/* 
-.sec4 {
-    clear: both;
-}
-
 .sec5 {
-    background-color: red; */
-/* Example background color, adjust as needed */
-/*    clear: both;
-}
-
- .sec5content,
-.sec6content {
-    width: 100%;
-    clear: both;
-} */
-.sec4 {
-    clear: both;
-    position: relative;
-    /* Ensure position is set for z-index to work */
-    z-index: 1;
-    /* You can adjust this value as needed */
-}
-
-.sec5 {
-    background-color: red;
+    /* background-color: red; */
     /* Example background color, adjust as needed */
-    clear: both;
     position: relative;
-    /* Ensure position is set for z-index to work */
     z-index: 0;
-    /* You can adjust this value as needed */
+    clear: both;
+    /* ... (rest of your styling for sec5) ... */
 }
 
 .sec5content,
 .sec6content {
-    width: 100%;
+    width: 98vw;
     clear: both;
     position: relative;
-    /* Ensure position is set for z-index to work */
     z-index: 0;
-    /* You can adjust this value as needed */
+    /* ... (rest of your styling for sec5content and sec6content) ... */
 }
 
-.recentWorks {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.item1 {
-    background-image: url("/images/image 1.jpg");
-}
-
-.item2 {
-    background-image: url("/images/image 2.jpg");
-}
-
-.item3 {
-    background-image: url("/images/image 3.jpg");
-}
-
-.item4 {
-    background-image: url("/images/image 4.jpg");
-}
-
-.item5 {
-    background-image: url("/images/image 5.jpg");
-}
-
-.item6 {
-    background-image: url("/images/image 6.jpg");
-}
-
-.container {
-    display: inline-block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: mintcream;
-    opacity: 1;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    background-repeat: no-repeat;
-}
-
-.container a {
-    text-decoration: none;
-}
-
-.container a:active,
-.container a:visited {
-    color: blue;
-}
-
-.projects {
-    position: relative;
-}
-
-.container .middle {
-    transition: .5s ease;
-    opacity: 0;
-    margin-top: 30%;
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    width: fit-content;
-}
-
-.containerName {
-    background-color: rgba(0, 0, 0, 0.61);
-    backdrop-filter: blur(5px);
-}
-
-
+.sec4,
+.sec5,
+.sec6,
 .contact {
-    padding: 5px;
-}
-
-/* footer */
-
-#footer {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 95%;
-    margin: 3%;
-    min-width: 10px;
-    justify-content: space-between;
-    border-top: solid 3px grey;
-    box-shadow: 2px 2px 35px 2px #8a8a1d;
-    padding: 12px 28px;
-    font-weight: 700;
-    font-size: large;
-    align-items: center;
-    letter-spacing: 3px;
+    width: 95vw;
+    margin: 3% 1% 3% 1%;
+    text-align: center;
 }
 
-.footer .menu a {
-    margin-right: 38px;
-    text-decoration: none;
-    color: black;
-}
-
-/* LOCAL */
-/* @media queries */
-
-/* Extra small devices (phones, 600px and down) */
-/* @media only screen and (max-width: 600px) {} */
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
+/* ... (rest of your CSS) ... */
 @media only screen and (min-width: 300px) {
     .sec2 {
         padding: 2.2px;
@@ -317,11 +182,12 @@ ol li {
 
     .sec4 {
         height: fit-content;
+        margin-top: -10px;
     }
 
     .sec4files {
         width: inherit;
-        position: absolute;
+        /* position: absolute; */
         height: inherit;
         margin-left: 0.5%;
         /* z-index: 1; */
@@ -364,11 +230,11 @@ ol li {
 
     .sec4 {
         height: fit-content;
+        margin-top: -100px;
     }
 
     .sec4files {
         width: inherit;
-        /* position: absolute; */
         top: 27pc;
         margin-left: 0.5%;
         /* z-index: 1; */
