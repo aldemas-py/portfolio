@@ -8,6 +8,7 @@ fetch("head/header.html")
         return res.text();
     })
     .then((data) => {
+        // Populate the navbar with the fetched HTML content
         navbarElement.innerHTML = data;
     })
     .catch((error) => {
@@ -23,12 +24,15 @@ function setDynamicWebDate(elementId, startDateString) {
         const timeDifference = currentDate - startDate;
         const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
 
+        // Update the web date element with calculated years
         document.getElementById(elementId).innerHTML = `${years} ${years === 1 ? 'year' : 'years'}`;
     }
 
+    // Initial call to update the web date
     updateWebDate();
 
-    setInterval(updateWebDate, 24 * 60 * 60 * 1000); // Update every 24 hours
+    // Schedule updates every 24 hours
+    setInterval(updateWebDate, 24 * 60 * 60 * 1000);
 }
 
 // Footer
@@ -41,6 +45,7 @@ fetch("head/footer.html")
         return res.text();
     })
     .then((data) => {
+        // Populate the footer with the fetched HTML content
         footerElement.innerHTML = data;
         footerAlign(); // Call footer alignment after loading footer content
     })
@@ -48,11 +53,15 @@ fetch("head/footer.html")
         console.error('Error fetching footer:', error);
     });
 
+// Function to align footer properly
 function footerAlign() {
+    // Calculate the height of the footer
     var footerHeight = $(".footer").outerHeight();
-    $("body").css("margin-bottom", footerHeight); // Use "margin-bottom" instead of "padding-bottom"
+    // Set body's margin-bottom to the height of the footer
+    $("body").css("margin-bottom", footerHeight);
 }
 
+// Attach the footerAlign function to window resize event
 $(window).resize(function () {
     footerAlign();
 });
