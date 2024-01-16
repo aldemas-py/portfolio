@@ -285,7 +285,7 @@ ol li {
 /* @media only screen and (max-width: 600px) {} */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 300px) {
+@media only screen and (min-width: 250px) {
 
     .sec2 {
         padding: 2.2px;
