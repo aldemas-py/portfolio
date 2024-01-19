@@ -16,6 +16,7 @@ body {
 
 .body {
     color: black;
+    min-width: 300px;
 }
 
 /* ... (rest of your global styles) ... */
