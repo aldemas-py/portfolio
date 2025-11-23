@@ -195,7 +195,8 @@ ol li {
 }
 
 .item1 {
-    background-image: url("/images/image1.jpg");
+    background-image: url("/images/forestbridge.jpeg");
+    height: inherit;
 }
 
 .item2 {
