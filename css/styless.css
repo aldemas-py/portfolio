@@ -7,11 +7,11 @@
 
 body {
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    background-image: linear-gradient(to bottom right, #fdcb52, #d63447);
+    background-image: linear-gradient(to bottom right, #fdca52, #d63447c2);
     background-attachment: fixed;
     text-align: center;
-    font-family: Rockwell;
     font-size: 15px;
+    font-family: "Cascadia Code";
 }
 
 .body {
@@ -82,6 +82,7 @@ body {
 .intro .sec1 {
     font-family: "Helvetica Neue", Garamond;
     font-weight: bolder;
+    font-size: 120%;
     padding-top: 10px;
     text-align: center;
     color: #2839d2;
@@ -114,7 +115,7 @@ img {
     font-size: 101%;
     z-index: 1;
     padding: 30px;
-    background-color: rgba(240, 206, 206, 0.502);
+    background-color: rgba(240, 206, 206, 0.256);
 }
 
 .sec4 {
@@ -124,19 +125,8 @@ img {
     /* ... (rest of your styling for sec4) ... */
 }
 
-.sec4 .containers {
-    /* Light grey background color */
-    background-color: #e0e0e0;
-    color: #000;
-    display: inline-block;
-    margin: 1px;
-    padding: 15px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
 .containers .sectionHead,
-.projects .sec6head {
+.projects .sec4head {
     font-size: larger;
     font-weight: bolder;
 }
@@ -154,8 +144,27 @@ ol li {
     /* ... (rest of your styling for sec5) ... */
 }
 
-.sec5content,
+.sec6 .containers {
+    /* Light grey background color */
+    background-color: #e0e0e0;
+    color: #000;
+    display: inline-block;
+    margin: 1px;
+    padding: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.sec5content {
+    font-size: larger;
+}
+
 .sec6content {
+    font-size: 75%;
+}
+
+.sec5content,
+.sec4content {
     width: 98vw;
     clear: both;
     position: relative;
@@ -186,27 +195,27 @@ ol li {
 }
 
 .item1 {
-    background-image: url("/images/image 1.jpg");
+    background-image: url("/images/image1.jpg");
 }
 
 .item2 {
-    background-image: url("/images/image 2.jpg");
+    background-image: url("/images/image2.jpg");
 }
 
 .item3 {
-    background-image: url("/images/image 3.jpg");
+    background-image: url("/images/image3.jpg");
 }
 
 .item4 {
-    background-image: url("/images/image 4.jpg");
+    background-image: url("/images/image4.jpg");
 }
 
 .item5 {
-    background-image: url("/images/image 5.jpg");
+    background-image: url("/images/image5.jpg");
 }
 
 .item6 {
-    background-image: url("/images/image 6.jpg");
+    background-image: url("/images/image6.jpg");
 }
 
 .recentWorks .container {
@@ -303,7 +312,7 @@ ol li {
         margin-top: -40px;
     }
 
-    .sec4files {
+    .sec6files {
         height: inherit;
         width: 95%;
         margin-left: 2.0%;
@@ -338,42 +347,51 @@ ol li {
         margin-top: -35px;
     }
 
+    .sec6 {
+        font-size: 78%;
+    }
+
+
 }
 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     body {
-        font-size: 17px;
+        font-size: 24px;
     }
 
     .sec3 {
-        height: 250px;
+        height: 350px;
     }
 
     .sec4 {
-        height: fit-content;
         margin-top: -100px;
     }
 
-    .sec4files {
+    .sec6 {
+        height: fit-content;
+        /* margin-top: -100px; */
+    }
+
+
+    .sec6files {
         width: inherit;
         top: 27pc;
         margin-left: 1.5%;
         /* z-index: 1; */
     }
 
-    .sec4 .containers {
+    .sec6 .containers {
         height: fit-content;
         width: 49%;
-        max-width: 550px;
+        max-width: 650px;
     }
 
-
     .container {
-        width: 20%;
-        height: 200px;
-        max-width: 300px;
+        width: 40%;
+        height: 280px;
+        max-width: 350px;
     }
 
     .container:hover {
@@ -393,7 +411,7 @@ ol li {
 
     .item1,
     .item4 {
-        margin-left: 20%;
+        margin-left: 15%;
     }
 
     .text {
@@ -414,7 +432,7 @@ ol li {
         text-align: center;
     }
 
-    .sec4files {
+    .sec6files {
         top: 27pc;
         width: inherit;
     }
