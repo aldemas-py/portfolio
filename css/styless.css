@@ -7,7 +7,7 @@
 
 body {
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    background-image: linear-gradient(to bottom right, #fdca52, #d63447c2);
+    background-image: linear-gradient(to bottom right, #fdca524c, #d6344777);
     background-attachment: fixed;
     text-align: center;
     font-size: 15px;
@@ -236,7 +236,7 @@ ol li {
 
 .recentWorks .container a:active,
 .recentWorks .container a:visited {
-    color: blue;
+    color: rgb(255, 255, 0);
 }
 
 .projects {
@@ -255,7 +255,7 @@ ol li {
 }
 
 .containerName {
-    background-color: rgba(0, 0, 0, 0.61);
+    background-color: rgba(0, 0, 0, 0.542);
     backdrop-filter: blur(5px);
 }
 
