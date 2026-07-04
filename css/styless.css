@@ -108,7 +108,10 @@ body {
 
 img {
     display: inline-flex;
+    max-width: 100%;
+    height: auto;
 }
+
 
 .sec3 {
     position: relative;
