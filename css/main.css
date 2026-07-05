@@ -1,0 +1,279 @@
+/* Consolidated stylesheet for the portfolio site */
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cascadia Code", Rockwell, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    color: #1C1917;
+    background-color: #F5F5F4;
+    background-attachment: fixed;
+    min-width: 320px;
+}
+
+img {
+    display: inline-flex;
+    max-width: 100%;
+    height: auto;
+}
+
+.navbar,
+#footer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 95%;
+    margin: 0 auto 1rem;
+    justify-content: space-between;
+    border: 1px solid #DAD7D0;
+    box-shadow: 0 6px 18px rgba(28, 25, 23, 0.08);
+    padding: 1rem 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: #FFFFFF;
+}
+
+.site-title,
+.logo {
+    font-size: 1rem;
+}
+
+.content,
+.main,
+body>main {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.intro,
+.sec3,
+.sec4,
+.sec5,
+.sec6,
+.contact {
+    margin: 1rem auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+.intro {
+    padding-top: 1.5rem;
+}
+
+.sec1,
+.intro h1 {
+    font-family: "Helvetica Neue", Garamond, serif;
+    font-weight: bolder;
+    font-size: 2rem;
+    color: #2839d2;
+}
+
+#sec2,
+.intro #sec2,
+.sec2 {
+    font-size: 1rem;
+    color: #1C1917;
+    margin-top: 0.5rem;
+}
+
+.myImg,
+.imgContainer .myImg {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    background: #E6E2DA;
+    border: 3px solid #B0A89B;
+    margin-top: 1rem;
+}
+
+.sec3 {
+    background-color: #F4F4F5;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+#sec3head,
+.sec3 h2,
+.sectionHead {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.sec4,
+.sec6 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sec6 .sec6files {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #ECE9E2;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.containers,
+.designer,
+.fullStack,
+.mentor,
+.recentWorks .container,
+.container {
+    background: #FFFFFF;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08);
+    border: 1px solid #E6E2DA;
+    padding: 1rem;
+    width: 32vw;
+    min-width: 350px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.containers p,
+.container p,
+.recentWorks .container a {
+    margin: 0.5rem 0;
+}
+
+.recentWorks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.recentWorks .container a {
+    color: #111;
+    text-decoration: none;
+    display: block;
+}
+
+.containerName {
+    background-color: rgba(0, 0, 0, 0.61);
+    color: #fff;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+}
+
+.container .middle {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+
+.recentWorks .container:hover .middle,
+.recentWorks .container:hover .containerName {
+    opacity: 1;
+}
+
+.contact,
+.sec5 {
+    background: #FFFFFF;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.email,
+a {
+    color: #1C1917;
+}
+
+ol,
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin: 0.35rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .intro,
+    .sec3,
+    .sec5 {
+        padding: 2rem;
+    }
+
+    .designer,
+    .fullStack,
+    .mentor,
+    .recentWorks .container,
+    .container {
+        width: calc(33.333% - 1rem);
+    }
+
+    .conteiners {
+        max-width: 700px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        font-size: 16px;
+    }
+
+    .sec3 {
+        height: auto;
+    }
+
+    .container {
+        width: calc(25% - 1rem);
+        max-width: 280px;
+    }
+
+}
+
+.item1 {
+    color: red;
+    background-image: url("/images/image1.jpg");
+}
+
+.item2 {
+    background-image: url("/images/image2.jpg");
+}
+
+.item3 {
+    background-image: url("/images/image3.jpg");
+}
+
+.item4 {
+    background-image: url("/images/image4.jpg");
+}
+
+.item5 {
+    background-image: url("/images/image5.jpg");
+}
+
+.item6 {
+    background-image: url("/images/image6.jpg");
+}
