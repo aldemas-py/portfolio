@@ -1,24 +1,24 @@
 ---
-deployment:
-tasks:
-  - export DEPLOYPATH=/home/njengas1/public_html/
-  - /bin/cp index.html $DEPLOYPATH
-  - /bin/cp comingsoon.html $DEPLOYPATH
-  - /bin/cp -R images $DEPLOYPATH
-  - /bin/cp -R css $DEPLOYPATH
-  - /bin/cp -R js $DEPLOYPATH
-  - /bin/cp -R head $DEPLOYPATH
-
 # deployment:
-#   tasks:
-#     - export DEPLOYPATH=/home/njengas1/public_html/
-#     - /bin/cp index.html $DEPLOYPATH
-#     - /bin/cp comingsoon.html $DEPLOYPATH
-#     - /bin/rm -rf $DEPLOYPATH/images
-#     - /bin/rm -rf $DEPLOYPATH/css
-#     - /bin/rm -rf $DEPLOYPATH/js
-#     - /bin/rm -rf $DEPLOYPATH/head
-#     - /bin/cp -R images $DEPLOYPATH
-#     - /bin/cp -R css $DEPLOYPATH
-#     - /bin/cp -R js $DEPLOYPATH
-#     - /bin/cp -R head $DEPLOYPATH
+# tasks:
+#   - export DEPLOYPATH=/home/njengas1/public_html/
+#   - /bin/cp index.html $DEPLOYPATH
+#   - /bin/cp comingsoon.html $DEPLOYPATH
+#   - /bin/cp -R images $DEPLOYPATH
+#   - /bin/cp -R css $DEPLOYPATH
+#   - /bin/cp -R js $DEPLOYPATH
+#   - /bin/cp -R head $DEPLOYPATH
+
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/njengas1/public_html/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp comingsoon.html $DEPLOYPATH
+    - /bin/rm -rf $DEPLOYPATH/images
+    - /bin/rm -rf $DEPLOYPATH/css
+    - /bin/rm -rf $DEPLOYPATH/js
+    - /bin/rm -rf $DEPLOYPATH/head
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R head $DEPLOYPATH
