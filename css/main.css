@@ -114,6 +114,10 @@ body>main {
     gap: 1rem;
 }
 
+.sec4 {
+    max-width: 50vw;
+}
+
 .sec6 .sec6files {
     width: 100%;
     display: flex;
