@@ -131,7 +131,7 @@ body>main {
 .mentor,
 .recentWorks .container,
 .container {
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     border-radius: 1rem;
     box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08);
     border: 1px solid #E6E2DA;
@@ -194,6 +194,15 @@ body>main {
     opacity: 1;
 }
 
+/* Text block inside project cards: darker text and translucent background with soft shadow */
+.container .text {
+    color: #1C1917;
+    background: rgba(255, 255, 255, 0.65);
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
 .contact,
 .sec5 {
     background: #FFFFFF;
@@ -253,27 +262,40 @@ li {
 
 }
 
+/* Background images for project cards (item1–item6) */
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6 {
+    /* Correct relative path: CSS is in css/, images are in ../images/ */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 320px;
+}
+
 .item1 {
-    color: red;
-    background-image: url("/images/image1.jpg");
+    background-image: url("../images/image1.jpg");
 }
 
 .item2 {
-    background-image: url("/images/image2.jpg");
+    background-image: url("../images/image2.jpg");
 }
 
 .item3 {
-    background-image: url("/images/image3.jpg");
+    background-image: url("../images/image3.jpg");
 }
 
 .item4 {
-    background-image: url("/images/image4.jpg");
+    background-image: url("../images/image4.jpg");
 }
 
 .item5 {
-    background-image: url("/images/image5.jpg");
+    background-image: url("../images/image5.jpg");
 }
 
 .item6 {
-    background-image: url("/images/image6.jpg");
+    background-image: url("../images/image6.jpg");
 }
