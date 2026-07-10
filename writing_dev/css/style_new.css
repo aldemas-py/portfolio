@@ -1,0 +1,192 @@
+/*
+  Global stylesheet (standards-based)
+  - Uses CSS variables for theming
+  - Provides accessible defaults
+  - Keeps selectors aligned with writing_dev/index.html
+*/
+
+:root {
+  color-scheme: light dark;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  --bg: #0b1020;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.09);
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.7);
+
+  --primary: #7c3aed;
+  --primary-2: #22c55e;
+
+  --border: rgba(255, 255, 255, 0.14);
+
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+
+  --max-width: 68rem;
+}
+
+/* Basic reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background:
+    radial-gradient(
+      1200px 800px at 10% 0%,
+      rgba(124, 58, 237, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 600px at 90% 10%,
+      rgba(34, 197, 94, 0.25),
+      transparent 50%
+    ),
+    var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Accessible focus */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 75%, white 25%);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Page layout hooks from index.html */
+#body {
+  min-height: 100vh;
+  display: block;
+}
+
+#main.main,
+#main,
+.main {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+}
+
+/* Main content section styling */
+section.main,
+.main {
+  margin-top: var(--space-2);
+}
+
+#main {
+  padding-block: var(--space-4);
+}
+
+#main,
+header,
+footer {
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface) 92%, transparent 8%),
+    color-mix(in srgb, var(--surface) 70%, transparent 30%)
+  );
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+header,
+footer {
+  padding: var(--space-2);
+  margin-inline: auto;
+  max-width: var(--max-width);
+}
+
+header {
+  margin-bottom: var(--space-2);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 25%, rgba(255, 255, 255, 0.08) 75%),
+    color-mix(in srgb, var(--primary-2) 18%, rgba(255, 255, 255, 0.08) 82%)
+  );
+}
+
+footer {
+  margin-top: var(--space-2);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+/* Improve repeated sections */
+section.main {
+  padding: var(--space-2);
+  backdrop-filter: blur(10px);
+}
+
+/* Typography defaults for readable spacing */
+main,
+section,
+header,
+footer {
+  font-size: 1rem;
+}
+
+/* Responsiveness */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-2: 0.875rem;
+    --space-4: 1.25rem;
+  }
+}
