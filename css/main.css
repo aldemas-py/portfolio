@@ -174,7 +174,7 @@ body>main {
     justify-content: center;
 }
 
-.recentWorks .container a {
+.recentWorks a {
     color: #111;
     text-decoration: none;
     display: block;
