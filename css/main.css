@@ -272,7 +272,9 @@ li {
 .item3,
 .item4,
 .item5,
-.item6 {
+.item6,
+.item7,
+.item8 {
     /* Correct relative path: CSS is in css/, images are in ../images/ */
     background-size: cover;
     background-position: center;
@@ -309,5 +311,5 @@ li {
 }
 
 .item8 {
-    background-image: url("../images/Image8Copy.jpg");
+    background-image: url("../images/Image8.jpg");
 }
