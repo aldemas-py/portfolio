@@ -9,8 +9,10 @@
     <title>Njenga Sam</title>
 </head>
 
+
 <body>
     <div id="body">
+
         <header id="top">This is the nav bar</header>
         <main id="content">
             <h1 class="sec1">Designer, FullStack developer & Mentor</h1>
@@ -22,8 +24,10 @@
                 <p id="hhh">Hi, I'm Sam. Nice to meet you.</p>
                 <p>
                     Since beginning my journey as a freelance designer nearly 4 years ago, I've done remote work
-                    startups and collaborated with talented people to create digital products for both business and consumer
-                    use. I'm quietly confident, naturally curious, and perpetually working on improving my chops one design
+                    startups and collaborated with talented people to create digital products for both business and
+                    consumer
+                    use. I'm quietly confident, naturally curious, and perpetually working on improving my chops one
+                    design
                     problem at a time.
                 </p>
             </section>
@@ -61,7 +65,8 @@
                 </div>
                 <div class="mentor">
                     <p>Mentor</p>
-                    <p>I love and enjoy working with fellow developers to bring ideas to life and improve their craft.</p>
+                    <p>I love and enjoy working with fellow developers to bring ideas to life and improve their craft.
+                    </p>
                     <p>Experience I draw from:</p>
                     <p>UX/UI, product design, and freelancing</p>
                     <p>Design tools:</p>
@@ -80,5 +85,6 @@
     </div>
     <script src="js/ext.js"></script>
 </body>
+<hr>
 
 </html>
