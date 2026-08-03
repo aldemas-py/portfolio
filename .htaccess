@@ -1,0 +1,61 @@
+# ============================================================
+# Policy as Code - Server-Level Security Controls (.htaccess)
+# Mirrors policies/security.policy.yaml so security headers are
+# emitted by the server independently of the PHP runtime.
+# ============================================================
+
+# -- Transport security (HTTPS redirect per security.policy.yaml) --
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# -- HSTS (header emitted by server) --
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # -- Security headers (per security.policy.yaml) --
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "no-referrer-when-downgrade"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://unpkg.com; font-src 'self' data:; frame-ancestors 'none'"
+</IfModule>
+
+# -- Disable directory listing (deployment.policy.yaml: artifact hygiene) --
+Options -Indexes
+
+# -- Block access to sensitive files --
+<FilesMatch "^(\.git|\.htaccess|config\.php|compliance\.php|SECURITY\.md|COMPLIANCE\.md)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# -- Protect uploads from script execution (security.policy.yaml) --
+<IfModule mod_rewrite.c>
+    RewriteRule ^uploads/.*\.(php|pl|py|cgi|sh)$ - [F,L,NC]
+</IfModule>
+
+# -- Cache static assets (performance) --
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# -- Compress text assets (performance) --
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
+</IfModule>
+
+# -- Default document order --
+DirectoryIndex index.php index.html
+

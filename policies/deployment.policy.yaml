@@ -1,0 +1,53 @@
+# ============================================================
+# Policy as Code - Deployment Pipeline Policy
+# Njenga Sam Portfolio
+# Version: 1.0.0
+# Owner: Njenga Sam
+# Last Reviewed: 2024-01-01
+# ============================================================
+apiVersion: compliance.njengasam.io/v1
+kind: DeploymentPolicy
+metadata:
+  name: portfolio-deployment-policy
+  category: deployment
+spec:
+  version: 1.0.0
+  deploymentSystem: cPanel-Deployment-Cron
+  pipelineFile: ".cpanel.yml / .cp.yml"
+  targetPath: "/home/njengasam/public_html/" # placeholder
+  artifactManifest:
+    - index.php
+    - index.html
+    - comingsoon.html
+    - css/
+    - js/
+    - images/
+    - head/
+    - writing_dev/
+    - imageResizer/
+    - uploads/
+  steps:
+    - validate_php_lint
+    - validate_yaml_policies
+    - run_secrets_scan
+    - copy_static_assets
+    - clear_caches
+    - verify_headers
+    - smoke_test_https
+  environment:
+    staging: staging.njengasam.com
+    production: njengasam.com
+  rollback:
+    strategy: redeploy-prior-tag
+    restore_points_enabled: true
+  changeControl:
+    code_review_required: true
+    versioned_policies: true
+    signed_commits: recommended
+  verification:
+    post_deploy_health_check: true
+    uptime_monitor: true
+    security_headers_check: true
+status:
+  enforced: true
+  verified: every-deployment

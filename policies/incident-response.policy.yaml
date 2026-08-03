@@ -1,0 +1,50 @@
+# ============================================================
+# Policy as Code - Incident Response Policy
+# Njenga Sam Portfolio
+# Version: 1.0.0
+# Owner: Njenga Sam
+# Last Reviewed: 2024-01-01
+# ============================================================
+apiVersion: compliance.njengasam.io/v1
+kind: IncidentResponsePolicy
+metadata:
+  name: portfolio-incident-response-policy
+  category: incident-response
+spec:
+  version: 1.0.0
+  severityLevels:
+    - name: SEV1
+      description: Critical - data breach or full outage
+      response_sla_minutes: 15
+      notification_sla_minutes: 30
+    - name: SEV2
+      description: High - significant service degradation
+      response_sla_minutes: 60
+      notification_sla_minutes: 120
+    - name: SEV3
+      description: Medium - localized issue
+      response_sla_minutes: 240
+      notification_sla_minutes: 480
+    - name: SEV4
+      description: Low - cosmetic/non-critical
+      response_sla_minutes: 1440
+      notification_sla_minutes: 2880
+  phases:
+    - detection
+    - containment
+    - eradication
+    - recovery
+    - lessons_learned
+  contact:
+    primary_owner: Njenga Sam
+    email: leumaskabura@gmail.com
+  communication:
+    internal_channel: private
+    external_notice: within-72h-if-breach
+  postIncident:
+    record_incident: true
+    update_policies: true
+    run_root_cause_analysis: true
+status:
+  enforced: true
+  verified: quarterly

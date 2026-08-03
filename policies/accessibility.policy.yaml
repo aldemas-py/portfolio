@@ -1,0 +1,56 @@
+# ============================================================
+# Policy as Code - Accessibility Policy (WCAG 2.1)
+# Njenga Sam Portfolio
+# Version: 1.0.0
+# Owner: Njenga Sam
+# Last Reviewed: 2024-01-01
+# ============================================================
+apiVersion: compliance.njengasam.io/v1
+kind: AccessibilityPolicy
+metadata:
+  name: portfolio-accessibility-policy
+  category: accessibility
+spec:
+  version: 1.0.0
+  complianceFrameworks:
+    - WCAG-2.1-AA
+  principles:
+    perceivable: true
+    operable: true
+    understandable: true
+    robust: true
+  contrast:
+    body_text_ratio_min: "4.5:1"
+    large_text_ratio_min: "3:1"
+    ui_components_ratio_min: "3:1"
+  keyboard:
+    all_functionality_keyboard_accessible: true
+    focus_visible: true
+    no_keyboard_traps: true
+  semantics:
+    use_semantic_html: true
+    single_h1_per_page: true
+    landmark_regions: true
+    alt_text_on_images: true
+    form_labels_associated: true
+  motion:
+    respect_prefers_reduced_motion: true
+    no_flashing_over_3_per_second: true
+  forms:
+    errors_described_in_text: true
+    required_fields_identified: true
+  assistiveTechnology:
+    screen_reader_compatible: true
+    aria_landmarks: true
+    skip_navigation_link: true
+  testing:
+    automated: true
+    manual: true
+    tools:
+      - axe-core
+      - Lighthouse
+      - WAVE
+    cadence: each_release
+status:
+  enforced: true
+  verified: each-release

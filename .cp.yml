@@ -1,10 +1,38 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/njengas2/public_html/
+    # ============================================================
+    # Policy as Code - Deployment Pipeline (mirror)
+    # Kept in sync with .cpanel.yml per deployment.policy.yaml
+    # ============================================================
+    - export DEPLOYPATH=/home/njengasam/public_html/
+    - export POLICY_DIR=policies
+
+    # -- GATE 1: Validate PHP syntax ------------------------------------------
+    - find . -name "*.php" -exec php -l {} \; > /dev/null
+
+    # -- GATE 2: Validate policy files present --------------------------------
+    - test -f $POLICY_DIR/security.policy.yaml
+    - test -f $POLICY_DIR/privacy.policy.yaml
+    - test -f $POLICY_DIR/accessibility.policy.yaml
+    - test -f $POLICY_DIR/deployment.policy.yaml
+    - test -f $POLICY_DIR/backup.policy.yaml
+    - test -f $POLICY_DIR/incident-response.policy.yaml
+
+    # -- GATE 3: Secrets scan -------------------------------------------------
+    - grep -rn "password_hash\s*=\s*'\$2" includes/config.php && exit 1 || true
+
+    # -- Deploy core entry points ---------------------------------------------
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp compliance.php $DEPLOYPATH
+    - /bin/cp SECURITY.md $DEPLOYPATH
+    - /bin/cp COMPLIANCE.md $DEPLOYPATH
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp comingsoon.html $DEPLOYPATH
+    - /bin/cp -R policies $DEPLOYPATH/policies
+    - /bin/cp -R includes $DEPLOYPATH/includes
 
+    # -- Clean old static dirs -------------------------------------------------
     - /bin/rm -rf $DEPLOYPATH/images
     - /bin/rm -rf $DEPLOYPATH/css
     - /bin/rm -rf $DEPLOYPATH/js
@@ -12,9 +40,13 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/writing_dev
     - /bin/rm -rf $DEPLOYPATH/imageResizer
 
+    # -- Copy static assets -----------------------------------------------------
     - /bin/cp -R images $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
     - /bin/cp -R js $DEPLOYPATH
     - /bin/cp -R head $DEPLOYPATH
     - /bin/cp -R writing_dev $DEPLOYPATH
     - /bin/cp -R imageResizer $DEPLOYPATH
+
+    # -- GATE 4: Post-deploy header smoke check ----------------------------------
+    - curl -sI https://njengasam.com/ | grep -q "Strict-Transport-Security" || echo WARN:HSTS_MISSING

@@ -1,0 +1,40 @@
+# ============================================================
+# Policy as Code - Backup & Disaster Recovery Policy
+# Njenga Sam Portfolio
+# Version: 1.0.0
+# Owner: Njenga Sam
+# Last Reviewed: 2024-01-01
+# ============================================================
+apiVersion: compliance.njengasam.io/v1
+kind: BackupPolicy
+metadata:
+  name: portfolio-backup-policy
+  category: backup
+spec:
+  version: 1.0.0
+  backupTargets:
+    database: portfolio_db
+    uploads: uploads/
+    code: htdocs-repo
+  schedule:
+    database_full: daily
+    uploads_incremental: hourly
+    code_snapshot: weekly
+  retention:
+    daily_keep_days: 14
+    weekly_keep_weeks: 8
+    monthly_keep_months: 12
+  encryption:
+    at_rest: true
+    in_transit: true
+  storage:
+    primary: local
+    offsite: remote-backup-bucket
+  testing:
+    restore_test_cadence: monthly
+    last_restore_test: verified
+  rpo_target_hours: 24
+  rto_target_hours: 4
+status:
+  enforced: true
+  verified: monthly

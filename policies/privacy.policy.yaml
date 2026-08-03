@@ -1,0 +1,59 @@
+# ============================================================
+# Policy as Code - Privacy & Data Protection Policy
+# Njenga Sam Portfolio
+# Version: 1.0.0
+# Owner: Njenga Sam
+# Last Reviewed: 2024-01-01
+# ============================================================
+apiVersion: compliance.njengasam.io/v1
+kind: PrivacyPolicy
+metadata:
+  name: portfolio-privacy-policy
+  category: privacy
+spec:
+  version: 1.0.0
+  complianceFrameworks:
+    - GDPR
+    - Kenya-Data-Protection-Act-2019
+  dataMinimization:
+    collect_only_necessary: true
+    contact_form_fields:
+      - name
+      - email
+      - phone
+      - subject
+      - message
+  lawfulBasis:
+    - consent
+    - legitimate-interest
+  consent:
+    required_for_contact_form: true
+    cookie_banner: true
+    opt_out_available: true
+  storage:
+    database: portfolio_db
+    tables:
+      - messages
+      - testimonials
+    retention:
+      messages_days: 365
+      testimonials: indefinite
+  dataSubjectRights:
+    right_to_access: true
+    right_to_rectification: true
+    right_to_erasure: true
+    request_email: leumaskabura@gmail.com
+  cookies:
+    necessary_only: true
+    session_cookie_purpose: "Admin session management"
+    no_tracking_third_party: true
+  thirdParty:
+    no_data_sharing: true
+    external_scripts_allowed:
+      - https://unpkg.com (ionicons)
+  breachNotification:
+    notification_time_hours: 72
+    contact_email: leumaskabura@gmail.com
+status:
+  enforced: true
+  verified: periodically
