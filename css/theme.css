@@ -6,6 +6,8 @@
     --muted: #64748b;
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
+    --accent: #F59E0B;
+    --accent-dark: #D97706;
     --border: #dce5f5;
     --shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
 }
@@ -54,6 +56,7 @@ a,
 
 .containerName {
     background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    border-bottom: 3px solid var(--accent);
     color: #fff !important;
     padding: 0.6rem !important;
     border-radius: 0.6rem !important;
@@ -69,6 +72,11 @@ a,
     color: var(--primary-dark) !important;
 }
 
+a:hover,
+.email:hover {
+    color: var(--accent-dark) !important;
+}
+
 /* Small helper to make the recent work cards feel like the optimizer UI */
 .recentWorks .container {
     transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -76,5 +84,25 @@ a,
 
 .recentWorks .container:hover {
     transform: translateY(-6px);
-    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 14px 36px rgba(245, 158, 11, 0.16);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+/* Complementary amber accent on the intro heading highlight word, interactive nav and section headers */
+.intro .sec1,
+.containers .sectionHead,
+.projects .sec4head {
+    color: var(--primary) !important;
+}
+
+.intro #sec2 {
+    color: var(--accent-dark) !important;
+}
+
+/* Hover overlay text on project cards uses the warm amber accent */
+.recentWorks .container .text {
+    color: #fff !important;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark)) !important;
+    padding: 0.6rem !important;
+    border-radius: 0.5rem !important;
 }

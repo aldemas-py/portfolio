@@ -81,6 +81,20 @@ body>main {
     margin-top: 0.5rem;
 }
 
+/* Complementary warm-amber accent for contrast (color theory) */
+.intro #sec2 {
+    color: #D97706;
+}
+
+a {
+    color: #1C1917;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #D97706;
+}
+
 .myImg,
 .imgContainer .myImg {
     border-radius: 50%;
