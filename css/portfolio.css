@@ -591,6 +591,51 @@ h6 {
     align-items: start;
 }
 
+.p-contact-info h2 {
+    margin-bottom: 1rem;
+}
+
+.p-contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.4rem;
+}
+
+.p-contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.p-contact-item h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+}
+
+.p-contact-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.p-contact-form {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+
 .p-contact-info h3 {
     font-size: 1.4rem;
     margin-bottom: 1rem;

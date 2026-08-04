@@ -117,9 +117,9 @@ include __DIR__ . '/includes/header.php';
             <div class="p-project-card"
                 data-project-url="<?php echo SITE_URL; ?>/project.php?slug=<?php echo h($project['slug']); ?>">
                 <div class="p-project-thumb">
-                    <?php if ($project['image']): ?>
-                    <img src="<?php echo SITE_URL; ?>/uploads/<?php echo h($project['image']); ?>"
-                        alt="<?php echo h($project['title']); ?>" loading="lazy">
+                    <?php $imgSrc = projectImage($project['image']); ?>
+                    <?php if ($imgSrc): ?>
+                    <img src="<?php echo h($imgSrc); ?>" alt="<?php echo h($project['title']); ?>" loading="lazy">
                     <?php else: ?>
                     &#128187;
                     <?php endif; ?>

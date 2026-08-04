@@ -11,7 +11,7 @@
 - [x] 6. `index.php`: dynamic homepage (hero, about brief, services, gallery w/ scrollbar, testimonials, CTA)
 - [x] 7. `about.php` + `services.php`: separate pages (resume-informed)
 - [x] 8. `projects.php` + `project.php`: full gallery + project detail (iframe-friendly, visit-link)
-- [ ] 9. `contact.php`: working contact form (saves to `messages`)
-- [ ] 10. Admin: verify messages `is_read`, add links to new pages
-- [ ] 11. Test: `php -l` all files, verify pages render & DB works
+- [x] 9. `contact.php`: working contact form (saves to `messages`)
+- [x] 10. Admin: verify messages `is_read`, add links to new pages
+- [x] 11. Test: `php -l` all files, verify pages render & DB works
 

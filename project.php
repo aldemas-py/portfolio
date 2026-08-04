@@ -40,9 +40,9 @@ include __DIR__ . '/includes/header.php';
 <section class="p-detail">
     <div class="p-container">
         <div class="p-detail-image">
-            <?php if ($project['image']): ?>
-            <img src="<?php echo SITE_URL; ?>/uploads/<?php echo h($project['image']); ?>"
-                alt="<?php echo h($project['title']); ?>">
+            <?php $imgSrc = projectImage($project['image']); ?>
+            <?php if ($imgSrc): ?>
+            <img src="<?php echo h($imgSrc); ?>" alt="<?php echo h($project['title']); ?>">
             <?php else: ?>
             &#128187;
             <?php endif; ?>
@@ -62,7 +62,8 @@ include __DIR__ . '/includes/header.php';
             <?php else: ?>
             <span class="p-coming-soon">&#9203; Coming Soon — Live URL not yet available</span>
             <?php endif; ?>
-            <a href="javascript:void(0)" onclick="window.closeProjectModal();return false;"
+            <a href="javascript:void(0)"
+                onclick="if(window.parent && window.parent.closeProjectModal){window.parent.closeProjectModal();}else{window.closeProjectModal();}return false;"
                 class="p-btn p-btn-outline">Close</a>
         </div>
     </div>

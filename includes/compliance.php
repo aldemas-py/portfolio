@@ -64,11 +64,11 @@ function enforceCompliance(): void
     // --- Security response headers ---
     $headers = [
         'X-Content-Type-Options' => 'nosniff',
-        'X-Frame-Options'         => 'DENY',
+        'X-Frame-Options'         => 'SAMEORIGIN',
         'Referrer-Policy'         => 'no-referrer-when-downgrade',
         'X-XSS-Protection'        => '1; mode=block',
         'Permissions-Policy'      => 'camera=(), microphone=(), geolocation=()',
-        'Content-Security-Policy' => "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://unpkg.com; font-src 'self' data:; frame-ancestors 'none'",
+        'Content-Security-Policy' => "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://unpkg.com; font-src 'self' data:; frame-ancestors 'self'",
     ];
 
     if (($sec['hsts_enabled'] ?? 'false') === 'true') {

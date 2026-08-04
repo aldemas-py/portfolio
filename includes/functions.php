@@ -128,6 +128,26 @@
     }
 
     /**
+     * Resolve a project image path. Checks uploads/ first (admin uploads),
+     * then falls back to images/ (seeded project images).
+     */
+    function projectImage($filename)
+    {
+        if (!$filename) {
+            return null;
+        }
+        $base = __DIR__ . '/..';
+        $filename = basename($filename); // sanitize
+        if (file_exists($base . '/uploads/' . $filename)) {
+            return SITE_URL . '/uploads/' . $filename;
+        }
+        if (file_exists($base . '/images/' . $filename)) {
+            return SITE_URL . '/images/' . $filename;
+        }
+        return null;
+    }
+
+    /**
      * Get a single project by slug
      */
     function getProjectBySlug($slug)
@@ -219,7 +239,7 @@
         $stats['total_projects'] = $db->query("SELECT COUNT(*) FROM projects WHERE is_published = 1")->fetchColumn();
         $stats['total_testimonials'] = $db->query("SELECT COUNT(*) FROM testimonials WHERE is_approved = 1")->fetchColumn();
         $stats['pending_testimonials'] = $db->query("SELECT COUNT(*) FROM testimonials WHERE is_approved = 0")->fetchColumn();
-$stats['total_messages'] = $db->query("SELECT COUNT(*) FROM messages")->fetchColumn();
+        $stats['total_messages'] = $db->query("SELECT COUNT(*) FROM messages")->fetchColumn();
         $stats['unread_messages'] = $db->query("SELECT COUNT(*) FROM messages WHERE is_read = 0")->fetchColumn();
         return $stats;
     }

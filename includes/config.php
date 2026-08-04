@@ -18,10 +18,23 @@ define('SITE_TAGLINE', 'Software Engineer | Full-Stack Developer | Solutions Arc
 // Auto-detect base URL
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? '127.0.0.1';
-$docRoot = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
-$scriptDir = str_replace('\\', '/', __DIR__);
-$relativePath = str_replace($docRoot, '', $scriptDir);
-$basePath = dirname($relativePath);
+$docRoot = rtrim(str_replace('\\', '/', (string)($_SERVER['DOCUMENT_ROOT'] ?? '')), '/');
+$scriptDir = rtrim(str_replace('\\', '/', __DIR__), '/');
+
+if ($docRoot !== '' && strpos($scriptDir . '/', $docRoot . '/') === 0) {
+    // Script lives inside the document root -> compute the URL sub-path.
+    $relativePath = substr($scriptDir, strlen($docRoot));
+    $basePath = rtrim(str_replace('\\', '/', dirname($relativePath)), '/');
+} else {
+    // DOCUMENT_ROOT unavailable (e.g. CLI) — infer from the htdocs layout.
+    $htdocsPos = stripos($scriptDir, '/htdocs/');
+    if ($htdocsPos !== false) {
+        $afterHtdocs = substr($scriptDir, $htdocsPos + strlen('/htdocs'));
+        $basePath = rtrim(str_replace('\\', '/', dirname($afterHtdocs)), '/');
+    } else {
+        $basePath = '';
+    }
+}
 define('SITE_URL', $protocol . '://' . $host . $basePath);
 define('ADMIN_EMAIL', 'leumaskabura@gmail.com');
 
