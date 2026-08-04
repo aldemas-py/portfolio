@@ -10,8 +10,9 @@
              ============================================================ -->
 <script>
 (function() {
-    var SESSION_TIMEOUT = 1800000; // 5 minutes (matches SESSION_TIMEOUT)
-    var logoutUrl = '<?php echo SITE_URL; ?>/admin/logout.php';
+    var SESSION_TIMEOUT =
+        <?php echo defined('SESSION_TIMEOUT') ? (SESSION_TIMEOUT * 1000) : 1800000; ?>; // matches PHP SESSION_TIMEOUT
+    var logoutUrl = '<?php echo SITE_URL; ?>/admin/logout.php?expired=1';
     var idleTimer = null;
 
     function resetIdleTimer() {
@@ -34,4 +35,3 @@
 </body>
 
 </html>
-</content>

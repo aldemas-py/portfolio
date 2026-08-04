@@ -75,6 +75,9 @@ function getDB()
 function startSession()
 {
     if (session_status() === PHP_SESSION_NONE) {
+        // Unique session name to isolate this project's sessions from other
+        // projects on the same server (prevents cross-project session sharing).
+        session_name('PORTFOLIO_SESSION');
         session_set_cookie_params([
             'lifetime' => 0,
             'path' => '/',

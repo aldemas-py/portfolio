@@ -83,14 +83,7 @@ function enforceCompliance(): void
 
     // --- Session hardening (mirrors config.php) ---
     if (session_status() === PHP_SESSION_NONE) {
-        session_set_cookie_params([
-            'lifetime' => 0,
-            'path'     => '/',
-            'httponly' => true,
-            'secure'   => (($sec['cookie_secure'] ?? 'false') === 'true'),
-            'samesite' => 'Strict',
-        ]);
-        session_start();
+        startSession();
     }
 }
 

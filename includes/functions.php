@@ -81,14 +81,19 @@
      */
     function adminLogout($redirectMessage = '')
     {
-        startSession();
+        $cookieName = session_name();
 
-        $_SESSION = [];
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION = [];
+            session_unset();
+            session_destroy();
+            session_write_close();
+        }
 
-        if (ini_get('session.use_cookies')) {
+        if (isset($_COOKIE[$cookieName]) || ini_get('session.use_cookies')) {
             $params = session_get_cookie_params();
             setcookie(
-                session_name(),
+                $cookieName,
                 '',
                 time() - 42000,
                 $params['path'],
@@ -96,12 +101,12 @@
                 $params['secure'],
                 $params['httponly']
             );
+            unset($_COOKIE[$cookieName]);
         }
 
-        session_destroy();
-
         if ($redirectMessage) {
-            session_start();
+            startSession();
+            $_SESSION = [];
             $_SESSION['logout_message'] = $redirectMessage;
             session_write_close();
         }
