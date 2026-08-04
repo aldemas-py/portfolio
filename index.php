@@ -164,9 +164,17 @@ include __DIR__ . '/includes/header.php';
                 </div>
                 <div class="p-testimonial-content">"<?php echo h($testimonial['content']); ?>"</div>
                 <div class="p-testimonial-author">
+                    <?php $tImage = testimonialImage($testimonial['image'] ?? ''); ?>
+                    <?php if ($tImage): ?>
+                    <div class="p-testimonial-avatar">
+                        <img src="<?php echo h($tImage); ?>" alt="<?php echo h($testimonial['client_name']); ?>"
+                            style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
+                    </div>
+                    <?php else: ?>
                     <div class="p-testimonial-avatar">
                         <?php echo strtoupper(substr($testimonial['client_name'], 0, 1)); ?>
                     </div>
+                    <?php endif; ?>
                     <div>
                         <h4><?php echo h($testimonial['client_name']); ?></h4>
                         <span><?php echo h($testimonial['client_role'] ?? 'Client'); ?></span>

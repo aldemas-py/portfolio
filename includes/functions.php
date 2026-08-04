@@ -148,6 +148,26 @@
     }
 
     /**
+     * Resolve a testimonial image path. Checks uploads/ first (admin uploads),
+     * then falls back to images/ (seeded images).
+     */
+    function testimonialImage($filename)
+    {
+        if (!$filename) {
+            return null;
+        }
+        $base = __DIR__ . '/..';
+        $filename = basename($filename); // sanitize
+        if (file_exists($base . '/uploads/' . $filename)) {
+            return SITE_URL . '/uploads/' . $filename;
+        }
+        if (file_exists($base . '/images/' . $filename)) {
+            return SITE_URL . '/images/' . $filename;
+        }
+        return null;
+    }
+
+    /**
      * Get a single project by slug
      */
     function getProjectBySlug($slug)

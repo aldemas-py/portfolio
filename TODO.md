@@ -15,3 +15,10 @@
 - [x] 10. Admin: verify messages `is_read`, add links to new pages
 - [x] 11. Test: `php -l` all files, verify pages render & DB works
 
+## Post-Revamp Production Features
+- [x] 12. Testimonial image upload: add `image` column to `testimonials` (schema + migration + ALTER on dev DB), `testimonialImage()` helper, admin upload form + preview, delete cleanup, public avatar display
+- [x] 13. Admin session logout: 5-min idle auto-logout JS (admin footer) + browser-close sessions (server-side `cookie_lifetime=0`)
+- [x] 14. Fix `admin/compliance.php` Forbidden: `.htaccess` was blocking any file named `compliance.php`; switched to protecting `/includes/` directory instead
+- [x] 15. Production hygiene: `.gitignore` added, `.cpanel.yml` cleanup rules for dev artifacts (test.html, ndex.html, index.q.html, comingsoon.html, index.html, test/, .DS_Store)
+- [ ] 16. Final pre-production audit (security, config, uploads, deploy)
+

@@ -31,11 +31,21 @@
 Options -Indexes
 
 # -- Block access to sensitive files --
-<FilesMatch "^(\.git|\.htaccess|config\.php|compliance\.php|SECURITY\.md|COMPLIANCE\.md)">
+# Note: We protect the /includes directory as a whole (it holds config.php,
+# functions.php, compliance.php) instead of blocking by filename, because a
+# filename-based FilesMatch would also catch admin/compliance.php (a legitimate
+# admin dashboard page) and break it.
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<FilesMatch "^\.(git|htaccess)">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
 </FilesMatch>
+<IfModule mod_rewrite.c>
+    RewriteRule ^includes/.*$ - [F,L,NC]
+</IfModule>
 
 # -- Protect uploads from script execution (security.policy.yaml) --
 <IfModule mod_rewrite.c>

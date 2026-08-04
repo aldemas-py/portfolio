@@ -41,6 +41,16 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/writing_dev
     - /bin/rm -rf $DEPLOYPATH/imageResizer
 
+    # -- Remove dev/scaffolding artifacts from production (artifact hygiene) --
+    - /bin/rm -f $DEPLOYPATH/test.html
+    - /bin/rm -f $DEPLOYPATH/index.q.html
+    - /bin/rm -f $DEPLOYPATH/ndex.html
+    - /bin/rm -f $DEPLOYPATH/comingsoon.html
+    - /bin/rm -f $DEPLOYPATH/index.html
+    - /bin/rm -f $DEPLOYPATH/test_images.php
+    - /bin/rm -rf $DEPLOYPATH/test
+    - /bin/rm -rf $DEPLOYPATH/.DS_Store
+
     # -- Copy static assets ---------------------------------------------------
     - /bin/cp -R images $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH

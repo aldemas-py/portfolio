@@ -23,6 +23,10 @@ if (isset($_GET['toggle'])) {
 // Delete
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
+    $stmt = $db->prepare("SELECT image FROM testimonials WHERE id = ?");
+    $stmt->execute([$id]);
+    $img = $stmt->fetchColumn();
+    if ($img) deleteImage($img);
     $stmt = $db->prepare("DELETE FROM testimonials WHERE id = ?");
     $stmt->execute([$id]);
     $message = 'Testimonial deleted successfully.';
@@ -38,16 +42,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_testimonial'])) 
     $is_approved = isset($_POST['is_approved']) ? 1 : 0;
 
     if ($client_name && $content) {
-        if ($id > 0) {
-            $stmt = $db->prepare("UPDATE testimonials SET client_name=?, client_role=?, content=?, rating=?, is_approved=? WHERE id=?");
-            $stmt->execute([$client_name, $client_role, $content, $rating, $is_approved, $id]);
-            $message = 'Testimonial updated.';
-        } else {
-            $stmt = $db->prepare("INSERT INTO testimonials (client_name, client_role, content, rating, is_approved) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$client_name, $client_role, $content, $rating, $is_approved]);
-            $message = 'Testimonial added.';
+        try {
+            $image = null;
+            if ($id > 0) {
+                $stmt = $db->prepare("SELECT image FROM testimonials WHERE id = ?");
+                $stmt->execute([$id]);
+                $existing_image = $stmt->fetchColumn();
+                $image = uploadImage($_FILES['image'] ?? [], $existing_image);
+            } else {
+                $image = uploadImage($_FILES['image'] ?? []);
+            }
+
+            if ($id > 0) {
+                $stmt = $db->prepare("UPDATE testimonials SET client_name=?, client_role=?, content=?, rating=?, image=?, is_approved=? WHERE id=?");
+                $stmt->execute([$client_name, $client_role, $content, $rating, $image, $is_approved, $id]);
+                $message = 'Testimonial updated.';
+            } else {
+                $stmt = $db->prepare("INSERT INTO testimonials (client_name, client_role, content, rating, image, is_approved) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$client_name, $client_role, $content, $rating, $image, $is_approved]);
+                $message = 'Testimonial added.';
+            }
+            $messageType = 'success';
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            $messageType = 'error';
         }
-        $messageType = 'success';
     } else {
         $message = 'Client name and content are required.';
         $messageType = 'error';
@@ -78,7 +97,7 @@ include __DIR__ . '/partials/header.php';
 
 <?php if ($editTestimonial || isset($_GET['new'])): ?>
 <div class="form-container">
-    <form method="POST" action="">
+    <form method="POST" action="" enctype="multipart/form-data">
         <input type="hidden" name="testimonial_id" value="<?php echo $editTestimonial['id'] ?? 0; ?>">
         <div class="form-row">
             <div class="form-group">
@@ -103,6 +122,20 @@ include __DIR__ . '/partials/header.php';
                 </option>
                 <?php endfor; ?>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="image">Client Photo / Avatar</label>
+            <input type="file" id="image" name="image" class="form-control" accept="image/*">
+            <?php if ($editTestimonial && $editTestimonial['image']): ?>
+            <div style="margin-top:0.5rem;">
+                <?php $tImg = testimonialImage($editTestimonial['image']); ?>
+                <?php if ($tImg): ?>
+                <img src="<?php echo h($tImg); ?>" class="preview-img" alt="Current photo"
+                    style="width:60px;height:60px;border-radius:50%;object-fit:cover;">
+                <?php endif; ?>
+                <small style="color:var(--muted);"> Current photo. Upload new to replace.</small>
+            </div>
+            <?php endif; ?>
         </div>
         <div class="form-group">
             <label for="content">Testimonial Content *</label>
@@ -130,6 +163,7 @@ include __DIR__ . '/partials/header.php';
     <table>
         <thead>
             <tr>
+                <th>Photo</th>
                 <th>Client</th>
                 <th>Role</th>
                 <th>Rating</th>
@@ -141,6 +175,19 @@ include __DIR__ . '/partials/header.php';
         <tbody>
             <?php foreach ($testimonials as $t): ?>
             <tr>
+                <td>
+                    <?php if ($t['image']): ?>
+                    <?php $tImg = testimonialImage($t['image']); ?>
+                    <?php if ($tImg): ?>
+                    <img src="<?php echo h($tImg); ?>" class="preview-img" alt=""
+                        style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
+                    <?php else: ?>
+                    <span style="color:var(--muted);">No img</span>
+                    <?php endif; ?>
+                    <?php else: ?>
+                    <span style="color:var(--muted);">No img</span>
+                    <?php endif; ?>
+                </td>
                 <td><strong><?php echo h($t['client_name']); ?></strong></td>
                 <td><?php echo h($t['client_role'] ?? '-'); ?></td>
                 <td><span style="color:var(--accent);"><?php echo str_repeat('&#9733;', $t['rating']); ?></span></td>

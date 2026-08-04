@@ -1,0 +1,47 @@
+# ============================================================
+# Njenga Sam Portfolio - Git Ignore
+# Keeps development/scaffolding artifacts and generated files
+# out of version control and off the production server.
+# ============================================================
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Uploaded / generated content (never commit user uploads)
+uploads/*
+!uploads/.gitkeep
+uploads/**/*.php
+uploads/**/*.pl
+uploads/**/*.py
+uploads/**/*.cgi
+uploads/**/*.sh
+
+# Development / scaffolding leftovers (kept out of git & production)
+test.html
+index.q.html
+ndex.html
+comingsoon.html
+index.html
+test/
+test_images.php
+comingsoon.html
+
+# Logs & temp
+*.log
+*.tmp
+temp/
+
+# Deployment configs (credentials/paths)
+.cpanel.yml
+.cp.yml
+
+# Local database / env
+.env
+*.sqlite
+config.local.php
