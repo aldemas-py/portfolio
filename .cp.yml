@@ -20,7 +20,7 @@ deployment:
     - test -f $POLICY_DIR/incident-response.policy.yaml
 
     # -- GATE 3: Secrets scan -------------------------------------------------
-    - grep -rn "password_hash\s*=\s*'\$2" includes/config.php && exit 1 || true
+    - 'grep -rn ''password_hash\s*=\s*\$2'' includes/config.php && exit 1 || true'
 
     # -- Deploy core entry points ---------------------------------------------
     - /bin/cp index.php $DEPLOYPATH
