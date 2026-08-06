@@ -1,4 +1,4 @@
- <?php
+<?php
 
     /**
      * Njenga Sam Portfolio - Helper Functions

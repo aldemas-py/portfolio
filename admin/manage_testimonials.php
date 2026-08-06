@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_testimonial'])) 
     }
 }
 
-$testimonials = getTestimonials(true);
+$testimonials = getAllTestimonials();
 $editTestimonial = null;
 if (isset($_GET['edit'])) {
     $stmt = $db->prepare("SELECT * FROM testimonials WHERE id = ?");
