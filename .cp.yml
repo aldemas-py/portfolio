@@ -25,6 +25,12 @@ deployment:
     # -- Deploy core entry points ---------------------------------------------
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp compliance.php $DEPLOYPATH
+    - /bin/cp about.php $DEPLOYPATH
+    - /bin/cp contact.php $DEPLOYPATH
+    - /bin/cp project.php $DEPLOYPATH
+    - /bin/cp projects.php $DEPLOYPATH
+    - /bin/cp services.php $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
     - /bin/cp SECURITY.md $DEPLOYPATH
     - /bin/cp COMPLIANCE.md $DEPLOYPATH
     - /bin/cp index.html $DEPLOYPATH
@@ -40,6 +46,16 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/writing_dev
     - /bin/rm -rf $DEPLOYPATH/imageResizer
 
+    # -- Remove dev/scaffolding artifacts from production (artifact hygiene) --
+    - /bin/rm -f $DEPLOYPATH/test.html
+    - /bin/rm -f $DEPLOYPATH/index.q.html
+    - /bin/rm -f $DEPLOYPATH/ndex.html
+    - /bin/rm -f $DEPLOYPATH/comingsoon.html
+    - /bin/rm -f $DEPLOYPATH/index.html
+    - /bin/rm -f $DEPLOYPATH/test_images.php
+    - /bin/rm -rf $DEPLOYPATH/test
+    - /bin/rm -rf $DEPLOYPATH/.DS_Store
+
     # -- Copy static assets -----------------------------------------------------
     - /bin/cp -R images $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
@@ -48,5 +64,5 @@ deployment:
     - /bin/cp -R writing_dev $DEPLOYPATH
     - /bin/cp -R imageResizer $DEPLOYPATH
 
-    # -- GATE 4: Post-deploy header smoke check ----------------------------------
+    # -- GATE 4: Post-deploy health check (HTTPS + security headers) ---------
     - curl -sI https://njengasam.com/ | grep -q "Strict-Transport-Security" || echo WARN:HSTS_MISSING

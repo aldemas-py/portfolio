@@ -26,6 +26,12 @@ deployment:
     # -- Deploy core entry points -------------------------------------------
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp compliance.php $DEPLOYPATH
+    - /bin/cp about.php $DEPLOYPATH
+    - /bin/cp contact.php $DEPLOYPATH
+    - /bin/cp project.php $DEPLOYPATH
+    - /bin/cp projects.php $DEPLOYPATH
+    - /bin/cp services.php $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
     - /bin/cp SECURITY.md $DEPLOYPATH
     - /bin/cp COMPLIANCE.md $DEPLOYPATH
     - /bin/cp index.html $DEPLOYPATH
