@@ -22,17 +22,10 @@ foreach ($posture as $info) {
     }
 }
 $score = $total > 0 ? round(($compliant / $total) * 100) : 0;
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Compliance posture for Njenga Sam portfolio — Policy as Code, security headers, privacy, accessibility, deployment, backup and incident response policies.">
-    <title>Compliance | <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="css/styless.css">
+$pageTitle = 'Compliance';
+include __DIR__ . '/includes/header.php';
+?>
     <style>
     /* Public compliance page styles (complementary blue + warm amber) */
     .compliance-wrap {
@@ -187,9 +180,7 @@ $score = $total > 0 ? round(($compliant / $total) * 100) : 0;
         }
     }
     </style>
-</head>
 
-<body>
     <div class="compliance-wrap">
         <span class="compliance-badge">&#128737; Policy as Code</span>
         <h1>Compliance &amp; Trust</h1>
@@ -250,6 +241,5 @@ $score = $total > 0 ? round(($compliant / $total) * 100) : 0;
             <a href="COMPLIANCE.md" style="color:#2839D2;">COMPLIANCE.md</a>
         </p>
     </div>
-</body>
 
-</html>
+    <?php include __DIR__ . '/includes/footer.php'; ?>
