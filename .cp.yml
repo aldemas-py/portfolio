@@ -5,7 +5,7 @@ deployment:
     # Policy as Code - Deployment Pipeline (mirror)
     # Kept in sync with .cpanel.yml per deployment.policy.yaml
     # ============================================================
-    - export DEPLOYPATH=/home/njengasam/public_html/
+    - export DEPLOYPATH=/home/njengas2/public_html/
     - export POLICY_DIR=policies
 
     # -- GATE 1: Validate PHP syntax ------------------------------------------

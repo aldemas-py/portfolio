@@ -6,7 +6,7 @@ deployment:
     # Gates enforced per deployment.policy.yaml:
     #   validate_php_lint, validate_yaml_policies, run_secrets_scan
     # ============================================================
-    - export DEPLOYPATH=/home/njengasam/public_html/
+    - export DEPLOYPATH=/home/njengas2/public_html/
     - export POLICY_DIR=policies
 
     # -- GATE 1: Validate PHP syntax on all PHP entry points ----------------
