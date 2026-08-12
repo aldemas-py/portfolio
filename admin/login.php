@@ -24,8 +24,7 @@ if (isset($_GET['expired']) && $_GET['expired'] == 1) {
 
 // Redirect if already logged in
 if (isset($_SESSION['admin_id'])) {
-    header('Location: ' . SITE_URL . '/admin/dashboard.php');
-    exit;
+        header('Location: /admin/dashboard.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -47,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['admin_username'] = $user['username'];
             $_SESSION['last_activity'] = time();
 
-            header('Location: ' . SITE_URL . '/admin/dashboard.php');
+            header('Location: /admin/dashboard.php');
             exit;
         } else {
             // Policy as Code: increment failed-attempt counter (rateLimiting: 5 / 300s)

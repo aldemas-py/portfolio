@@ -8,5 +8,5 @@ $expired = (isset($_GET['expired']) && $_GET['expired'] == 1) ? '?expired=1' : '
 // Secure logout - destroys session and clears the session cookie
 adminLogout($expired ? 'Your session has expired due to inactivity. Please log in again.' : 'You have been logged out successfully.');
 
-header('Location: ' . SITE_URL . '/admin/login.php' . $expired);
+header('Location: /admin/login.php' . $expired);
 exit;

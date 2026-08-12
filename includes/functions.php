@@ -71,7 +71,7 @@
     function requireAdmin()
     {
         if (!isAdminLoggedIn()) {
-            header('Location: ' . SITE_URL . '/admin/login.php?expired=1');
+            header('Location: /admin/login.php?expired=1');
             exit;
         }
     }
