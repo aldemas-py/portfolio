@@ -12,3 +12,4 @@ define('DB_NAME', 'njengas2_portfolio_db');
 define('DB_USER', 'njengas2_njenga');
 define('DB_PASS', '4t]3oyUN;Y52lE');
 define('DB_CHARSET', 'utf8mb4');
+
