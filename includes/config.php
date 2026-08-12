@@ -15,8 +15,14 @@ define('DB_CHARSET', 'utf8mb4');
 define('SITE_NAME', 'Njenga Sam');
 define('SITE_TAGLINE', 'Software Engineer | Full-Stack Developer | Solutions Architect');
 
-// Auto-detect base URL
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+// Auto-detect base URL and HTTPS behind proxies / load balancers.
+$isSecureRequest = (
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower((string)$_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
+    || (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && strtolower((string)$_SERVER['HTTP_X_FORWARDED_SSL']) === 'on')
+    || (!empty($_SERVER['REQUEST_SCHEME']) && strtolower((string)$_SERVER['REQUEST_SCHEME']) === 'https')
+);
+$protocol = $isSecureRequest ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? '127.0.0.1';
 $docRoot = rtrim(str_replace('\\', '/', (string)($_SERVER['DOCUMENT_ROOT'] ?? '')), '/');
 $scriptDir = rtrim(str_replace('\\', '/', __DIR__), '/');
@@ -35,6 +41,7 @@ if ($docRoot !== '' && strpos($scriptDir . '/', $docRoot . '/') === 0) {
         $basePath = '';
     }
 }
+define('IS_HTTPS_REQUEST', $isSecureRequest);
 define('SITE_URL', $protocol . '://' . $host . $basePath);
 define('ADMIN_EMAIL', 'leumaskabura@gmail.com');
 
@@ -82,7 +89,7 @@ function startSession()
             'lifetime' => 0,
             'path' => '/',
             'httponly' => true,
-            'secure' => false,
+            'secure' => IS_HTTPS_REQUEST,
             'samesite' => 'Strict'
         ]);
         session_start();
