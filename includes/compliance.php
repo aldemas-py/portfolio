@@ -28,6 +28,14 @@ require_once __DIR__ . '/config.php';
  * Load a policy file and return the parsed flat controls.
  * Falls back to a bundled default if the file is missing.
  */
+function startsWith(string $haystack, string $needle): bool
+{
+    if (function_exists('str_starts_with')) {
+        return str_starts_with($haystack, $needle);
+    }
+    return substr($haystack, 0, strlen($needle)) === $needle;
+}
+
 function loadPolicy(string $file): array
 {
     $path = dirname(__DIR__) . '/policies/' . $file;
@@ -37,14 +45,14 @@ function loadPolicy(string $file): array
         foreach ($lines as $line) {
             $line = trim($line);
             // Skip comments, blank lines, YAML structure markers
-            if ($line === '' || str_starts_with($line, '#') || str_starts_with($line, '---')) {
+            if ($line === '' || startsWith($line, '#') || startsWith($line, '---')) {
                 continue;
             }
             // Capture flat key: value pairs (skip nested lists/objects)
             if (preg_match('/^([a-zA-Z0-9_]+):\s*(.*)$/', $line, $m)) {
                 $key = $m[1];
                 $value = trim($m[2], "\"'");
-                if ($value !== '' && !str_starts_with($value, '-') && !str_starts_with($value, '[')) {
+                if ($value !== '' && !startsWith($value, '-') && !startsWith($value, '[')) {
                     $parsed[$key] = $value;
                 }
             }
