@@ -1,4 +1,7 @@
 <?php
+// Remove any stray output (BOM or whitespace) before headers are sent
+if (ob_get_level() === 0) ob_start();
+ob_clean();
 
 /**
  * ============================================================
