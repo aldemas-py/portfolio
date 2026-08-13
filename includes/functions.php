@@ -1,7 +1,4 @@
 <?php
-// Remove any stray output (BOM or whitespace) before headers are sent
-if (ob_get_level() === 0) ob_start();
-ob_clean();
 
     /**
      * Njenga Sam Portfolio - Helper Functions
@@ -74,7 +71,30 @@ ob_clean();
     function requireAdmin()
     {
         if (!isAdminLoggedIn()) {
-            header('Location: /admin/login.php?expired=1');
+            // Try header redirect first
+            if (!headers_sent()) {
+                header('Location: /admin/login.php?expired=1');
+                exit;
+            }
+            
+            // Fallback: use JavaScript + meta refresh if headers already sent
+            $redirect = '/admin/login.php?expired=1';
+            ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=<?php echo htmlspecialchars($redirect); ?>">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Redirecting to login...</p>
+    <script>
+        window.location.href = <?php echo json_encode($redirect); ?>;
+    </script>
+</body>
+</html>
+            <?php
             exit;
         }
     }

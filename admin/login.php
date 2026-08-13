@@ -24,7 +24,10 @@ if (isset($_GET['expired']) && $_GET['expired'] == 1) {
 
 // Redirect if already logged in
 if (isset($_SESSION['admin_id'])) {
+    if (!headers_sent()) {
         header('Location: /admin/dashboard.php');
+        exit;
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -46,7 +49,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['admin_username'] = $user['username'];
             $_SESSION['last_activity'] = time();
 
-            header('Location: /admin/dashboard.php');
+            // Try header redirect first
+            if (!headers_sent()) {
+                header('Location: /admin/dashboard.php');
+                exit;
+            }
+            
+            // Fallback: use JavaScript + meta refresh if headers already sent
+            $redirect = '/admin/dashboard.php';
+            ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=<?php echo htmlspecialchars($redirect); ?>">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Login successful. Redirecting...</p>
+    <script>
+        window.location.href = <?php echo json_encode($redirect); ?>;
+    </script>
+</body>
+</html>
+            <?php
             exit;
         } else {
             // Policy as Code: increment failed-attempt counter (rateLimiting: 5 / 300s)
