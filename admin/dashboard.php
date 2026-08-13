@@ -3,26 +3,14 @@
 /**
  * Njenga Sam Portfolio - Admin Dashboard
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/functions.php';
 requireAdmin();
 
-try {
-    $stats = getDashboardStats();
-    $db = getDB();
-    $recentProjects = $db->query("SELECT * FROM projects ORDER BY created_at DESC LIMIT 5")->fetchAll();
-    $recentMessages = $db->query("SELECT * FROM messages ORDER BY created_at DESC LIMIT 5")->fetchAll();
-} catch (Exception $e) {
-    echo "<pre style='color:red;font-family:monospace;margin:2rem;'>";
-    echo "ERROR: " . htmlspecialchars($e->getMessage()) . "\n\n";
-    echo htmlspecialchars($e->getTraceAsString());
-    echo "</pre>";
-    exit;
-}
+$stats = getDashboardStats();
+$db = getDB();
+$recentProjects = $db->query("SELECT * FROM projects ORDER BY created_at DESC LIMIT 5")->fetchAll();
+$recentMessages = $db->query("SELECT * FROM messages ORDER BY created_at DESC LIMIT 5")->fetchAll();
 
 $activePage = 'dashboard';
 $activeTitle = 'Dashboard';
