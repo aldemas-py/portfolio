@@ -1,4 +1,7 @@
 <?php
+// CRITICAL: Start output buffer before any include that might have BOM/whitespace
+// This prevents "headers already sent" errors
+ob_start();
 
 /**
  * Njenga Sam Portfolio - Configuration
