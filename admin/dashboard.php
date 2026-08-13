@@ -3,11 +3,21 @@
 /**
  * Njenga Sam Portfolio - Admin Dashboard
  */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/functions.php';
 requireAdmin();
 
-$stats = getDashboardStats();
+try {
+    $stats = getDashboardStats();
+} catch (Exception $e) {
+    echo "ERROR in getDashboardStats: " . $e->getMessage();
+    error_log("Dashboard error: " . $e->getMessage());
+    exit;
+}
 $db = getDB();
 $recentProjects = $db->query("SELECT * FROM projects ORDER BY created_at DESC LIMIT 5")->fetchAll();
 $recentMessages = $db->query("SELECT * FROM messages ORDER BY created_at DESC LIMIT 5")->fetchAll();
