@@ -28,13 +28,26 @@ if (!headers_sent()) {
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=<?php echo htmlspecialchars($redirect); ?>">
+    <meta http-equiv="refresh" content="2;url=<?php echo htmlspecialchars($redirect); ?>">
     <title>Redirecting...</title>
+    <style>
+        body { font-family: Arial; margin: 2rem; }
+        .debug { background: #f0f0f0; padding: 1rem; margin-top: 1rem; white-space: pre-wrap; font-family: monospace; font-size: 0.9rem; }
+    </style>
 </head>
 <body>
-    <p>Redirecting...</p>
+    <h2>Redirecting to <?php echo htmlspecialchars($redirect); ?></h2>
+    <p>If not redirected in 2 seconds, <a href="<?php echo htmlspecialchars($redirect); ?>">click here</a>.</p>
+    <div class="debug">
+        Debug Info:
+        - headers_sent(): <?php echo headers_sent() ? 'YES' : 'NO'; ?>
+        - Redirect target: <?php echo htmlspecialchars($redirect); ?>
+        - Session admin_id: <?php echo isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : 'NOT SET'; ?>
+    </div>
     <script>
-        window.location.href = <?php echo json_encode($redirect); ?>;
+        setTimeout(function() {
+            window.location.href = <?php echo json_encode($redirect); ?>;
+        }, 500);
     </script>
 </body>
 </html>
