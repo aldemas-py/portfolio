@@ -31,7 +31,7 @@ deployment:
     - /bin/cp project.php $DEPLOYPATH
     - /bin/cp projects.php $DEPLOYPATH
     - /bin/cp services.php $DEPLOYPATH
-    - /bin/cp .htaccess.bak $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
     - /bin/cp SECURITY.md $DEPLOYPATH
     - /bin/cp COMPLIANCE.md $DEPLOYPATH
     - /bin/cp index.html $DEPLOYPATH
@@ -57,7 +57,7 @@ deployment:
     - /bin/rm -f $DEPLOYPATH/test_images.php
     - /bin/rm -rf $DEPLOYPATH/test
     - /bin/rm -rf $DEPLOYPATH/.DS_Store
-    - /bin/rm -rf $DEPLOYPATH/.htaccess
+    - /bin/rm -rf $DEPLOYPATH/.htaccess.bak
 
     # -- Copy static assets ---------------------------------------------------
     - /bin/cp -R images $DEPLOYPATH
